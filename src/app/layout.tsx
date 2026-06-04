@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// TODO: 本番 URL が決まったら環境変数 NEXT_PUBLIC_SITE_URL に設定してください
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+// 独自ドメインを使う場合は環境変数 NEXT_PUBLIC_SITE_URL で上書きしてください
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://portal-site-self.vercel.app";
 const pageTitle = `${profile.nameEn} — ${profile.title}`;
 
 export const metadata: Metadata = {
