@@ -2,7 +2,13 @@
 //  サイトの内容はこのファイルだけ編集すれば差し替えできます。
 // =============================================================
 
-export type IconName = "github" | "linkedin" | "x" | "blog" | "mail";
+export type IconName =
+  | "github"
+  | "linkedin"
+  | "x"
+  | "blog"
+  | "mail"
+  | "credly";
 
 export type SocialLink = {
   label: string;
@@ -19,7 +25,6 @@ export const profile = {
   initials: "YY",
   title: "AI Engineer",
   badge: "AWS Community Builder · AI Engineering",
-  badgeUrl: "https://www.credly.com/users/yuuki-yamashita.1640e455",
   location: "Tokyo, Japan",
   // 画面では非表示。検索向けの説明文（OGP / meta description）として使用
   tagline: "生成 AI とサーバーレスで、アイデアを動くプロダクトに。",
@@ -59,5 +64,12 @@ export const socials: SocialLink[] = [
     href: "https://dev.to/_76130e67067eab4c8510",
     icon: "blog",
     gradient: "from-zinc-200 to-zinc-500",
+  },
+  {
+    label: "Credly",
+    href: "https://www.credly.com/users/yuuki-yamashita.1640e455",
+    handle: "AWS Community Builder",
+    icon: "credly",
+    gradient: "from-amber-400 to-orange-500",
   },
 ];

@@ -24,7 +24,6 @@ function Background() {
       <div className="animate-blob absolute -right-32 top-24 h-[26rem] w-[26rem] rounded-full bg-fuchsia-500/25 blur-3xl [animation-delay:-7s]" />
       <div className="animate-blob absolute -bottom-40 left-1/3 h-[30rem] w-[30rem] rounded-full bg-cyan-500/20 blur-3xl [animation-delay:-14s]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,#07070d_75%)]" />
-      <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:56px_56px]" />
     </div>
   );
 }
@@ -41,17 +40,10 @@ function Hero() {
         <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-zinc-200">
           {profile.title}
         </span>
-        <a
-          href={profile.badgeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1.5 rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-sm font-medium text-amber-200 transition hover:border-amber-400/40 hover:bg-amber-400/15"
-          title="Credly でバッジを表示"
-        >
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-sm font-medium text-amber-200">
           <CloudIcon className="h-3.5 w-3.5" />
           {profile.badge}
-          <ArrowIcon className="h-3 w-3 opacity-60 transition group-hover:translate-x-0.5" />
-        </a>
+        </span>
         <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-zinc-400">
           {profile.location}
         </span>

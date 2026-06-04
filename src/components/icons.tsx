@@ -74,10 +74,20 @@ export function CloudIcon(props: IconProps) {
   );
 }
 
+export function AwardIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" {...strokeProps} {...props} aria-hidden>
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+    </svg>
+  );
+}
+
 export const socialIcons: Record<IconName, (props: IconProps) => ReactElement> = {
   github: GitHubIcon,
   linkedin: LinkedInIcon,
   x: XIcon,
   blog: BlogIcon,
   mail: MailIcon,
+  credly: AwardIcon,
 };
