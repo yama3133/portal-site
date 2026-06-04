@@ -62,7 +62,7 @@ function Hero() {
         />
       </a>
 
-      <h1 className="text-gradient text-4xl font-bold tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] sm:text-6xl">
+      <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] sm:text-6xl">
         {profile.name}
       </h1>
       <p className="mt-2 font-mono text-sm text-zinc-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
