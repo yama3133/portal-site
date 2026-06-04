@@ -92,7 +92,7 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="group flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-black/30 text-zinc-200 backdrop-blur transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-black/50 hover:text-white"
+              className={`group flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${s.gradient} text-white shadow-lg ring-1 ring-white/15 transition hover:-translate-y-0.5 hover:shadow-xl`}
             >
               <Icon className="h-5 w-5" />
             </a>
