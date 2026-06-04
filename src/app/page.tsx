@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { profile, socials } from "@/data/site";
 import { socialIcons, ArrowIcon, CloudIcon } from "@/components/icons";
 
@@ -18,12 +19,24 @@ function Background() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#07070d]"
     >
-      <div className="animate-blob absolute -left-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-violet-600/30 blur-3xl" />
-      <div className="animate-blob absolute -right-32 top-24 h-[26rem] w-[26rem] rounded-full bg-fuchsia-500/25 blur-3xl [animation-delay:-7s]" />
-      <div className="animate-blob absolute -bottom-40 left-1/3 h-[30rem] w-[30rem] rounded-full bg-cyan-500/20 blur-3xl [animation-delay:-14s]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_0%,#07070d_75%)]" />
+      {/* 桜の写真（上部フルブリード） */}
+      <div className="absolute inset-x-0 top-0 h-[72vh]">
+        <Image
+          src="/sakura.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        {/* 文字の可読性を確保するオーバーレイ */}
+        <div className="absolute inset-0 bg-[#07070d]/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#07070d]/10 via-[#07070d]/35 to-[#07070d]" />
+      </div>
+      {/* 下部に控えめなアクセント光 */}
+      <div className="animate-blob absolute -bottom-40 left-1/3 h-[30rem] w-[30rem] rounded-full bg-violet-600/10 blur-3xl" />
     </div>
   );
 }
@@ -31,20 +44,40 @@ function Background() {
 function Hero() {
   return (
     <section className="fade-up flex flex-col items-center text-center">
-      <h1 className="text-gradient text-4xl font-bold tracking-tight sm:text-6xl">
+      <a
+        href={profile.credlyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="AWS Community Builder バッジ（Credly）"
+        title="Credly でバッジを表示"
+        className="group animate-float mb-7 inline-block"
+      >
+        <Image
+          src="/cb-badge.png"
+          alt="AWS Community Builder"
+          width={96}
+          height={96}
+          priority
+          className="h-24 w-24 rounded-2xl shadow-2xl ring-1 ring-white/15 transition duration-300 group-hover:scale-105"
+        />
+      </a>
+
+      <h1 className="text-gradient text-4xl font-bold tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] sm:text-6xl">
         {profile.name}
       </h1>
-      <p className="mt-2 font-mono text-sm text-zinc-400">{profile.nameEn}</p>
+      <p className="mt-2 font-mono text-sm text-zinc-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
+        {profile.nameEn}
+      </p>
 
       <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-zinc-200">
+        <span className="rounded-full border border-white/15 bg-black/30 px-3 py-1 text-sm font-medium text-zinc-100 backdrop-blur-sm">
           {profile.title}
         </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-sm font-medium text-amber-200">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-500/20 px-3 py-1 text-sm font-medium text-amber-100 backdrop-blur-sm">
           <CloudIcon className="h-3.5 w-3.5" />
           {profile.badge}
         </span>
-        <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-zinc-400">
+        <span className="rounded-full border border-white/15 bg-black/30 px-3 py-1 text-sm font-medium text-zinc-200 backdrop-blur-sm">
           {profile.location}
         </span>
       </div>
@@ -59,7 +92,7 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="group flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-zinc-300 backdrop-blur transition hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/10 hover:text-white"
+              className="group flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 bg-black/30 text-zinc-200 backdrop-blur transition hover:-translate-y-0.5 hover:border-white/30 hover:bg-black/50 hover:text-white"
             >
               <Icon className="h-5 w-5" />
             </a>

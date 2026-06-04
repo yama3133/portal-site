@@ -25,6 +25,7 @@ export const profile = {
   initials: "YY",
   title: "AI Engineer",
   badge: "AWS Community Builder · AI Engineering",
+  credlyUrl: "https://www.credly.com/users/yuuki-yamashita.1640e455",
   location: "Tokyo, Japan",
   // 画面では非表示。検索向けの説明文（OGP / meta description）として使用
   tagline: "生成 AI とサーバーレスで、アイデアを動くプロダクトに。",
