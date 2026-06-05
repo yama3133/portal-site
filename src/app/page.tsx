@@ -1,13 +1,12 @@
 import Image from "next/image";
-import { profile, socials } from "@/data/site";
-import { socialIcons, ArrowIcon, CloudIcon } from "@/components/icons";
+import { profile, socials, cover, type SocialLink } from "@/data/site";
+import { socialIcons, ArrowIcon } from "@/components/icons";
 
 export default function Home() {
   return (
-    <div className="relative min-h-dvh overflow-hidden">
-      <Background />
-      <main className="relative z-10 mx-auto w-full max-w-4xl px-5 pb-20 pt-20 sm:px-8 sm:pt-28">
-        <Hero />
+    <div className="relative">
+      <Cover />
+      <main className="mx-auto w-full max-w-4xl px-5 pb-20 sm:px-8">
         <Links />
         <Footer />
       </main>
@@ -15,91 +14,93 @@ export default function Home() {
   );
 }
 
-function Background() {
+function Cover() {
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#07070d]"
-    >
-      {/* 桜の写真（上部フルブリード） */}
-      <div className="absolute inset-x-0 top-0 h-[72vh]">
-        <Image
-          src="/sakura.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        {/* 文字の可読性を確保するオーバーレイ */}
-        <div className="absolute inset-0 bg-[#07070d]/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#07070d]/10 via-[#07070d]/35 to-[#07070d]" />
+    <section className="flex min-h-dvh w-full items-center justify-center bg-[#100d0a] p-3 sm:p-6">
+      <div className="relative aspect-[3/4] w-full max-w-[70.5vh] overflow-hidden bg-[#e9e2d3] text-[#1a1512] shadow-[0_40px_120px_rgba(0,0,0,0.6)] [container-type:size]">
+        <div className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-[4cqw] pt-[3.5cqw] font-mono text-[2.1cqw] uppercase tracking-[0.18em]">
+          <div className="space-y-[0.4cqw]">
+            <p className="font-semibold">{cover.issue}</p>
+            <p className="text-[#1a1512]/55">{cover.date}</p>
+          </div>
+          <div className="text-right">
+            <p className="font-semibold">{cover.place}</p>
+            <p className="text-[#1a1512]/55">{profile.title}</p>
+          </div>
+        </div>
+
+        <div className="absolute inset-x-0 top-[10cqw] z-30 text-center">
+          <p className="font-mono text-[2.1cqw] font-bold uppercase tracking-[0.28em] text-[#8a2f2a]">
+            {cover.headline.kicker} — {cover.headline.title}
+          </p>
+        </div>
+
+        <div className="pointer-events-none absolute left-1/2 top-[13%] z-10 aspect-[896/1195] h-[80%] -translate-x-1/2">
+          <Image
+            src="/portrait.png"
+            alt={profile.nameEn}
+            fill
+            priority
+            sizes="640px"
+            className="object-contain object-top drop-shadow-[0_20px_50px_rgba(26,21,18,0.3)]"
+          />
+        </div>
+
+        <h1 className="pointer-events-none absolute inset-x-0 top-[14.5cqw] z-20 text-center font-serif text-[27cqw] font-black leading-[0.78] tracking-[-0.02em] text-[#e9e2d3] mix-blend-difference">
+          Yuuki
+        </h1>
+
+        <h1 className="pointer-events-none absolute inset-x-0 bottom-[7.5cqw] z-20 text-center font-serif text-[19.5cqw] font-black leading-[0.78] tracking-[-0.02em] text-[#e9e2d3] mix-blend-difference">
+          Yamashita
+        </h1>
+
+        <div className="absolute right-[4cqw] top-[29%] z-30 flex max-w-[36%] flex-col items-end gap-[4.5cqw] text-right">
+          {socials.slice(0, 3).map((s, i) => (
+            <CoverLink key={s.label} s={s} index={i + 1} />
+          ))}
+        </div>
+
+        <div className="absolute left-[4cqw] top-[33%] z-30 flex max-w-[36%] flex-col items-start gap-[4.5cqw]">
+          {socials.slice(3, 6).map((s, i) => (
+            <CoverLink key={s.label} s={s} index={i + 4} />
+          ))}
+        </div>
+
+        <div className="absolute inset-x-[4cqw] bottom-[3cqw] z-30 flex items-end justify-between font-mono text-[2cqw] uppercase tracking-[0.18em] text-[#1a1512]/70">
+          <p className="max-w-[48%] leading-relaxed">{cover.edition}</p>
+          <div className="flex h-[6cqw] items-end gap-[0.5cqw]">
+            {Array.from({ length: 24 }).map((_, i) => (
+              <span
+                key={i}
+                className="block w-[0.4cqw] bg-[#1a1512]"
+                style={{ height: `${35 + ((i * 17) % 60)}%` }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      {/* 下部に控えめなアクセント光 */}
-      <div className="animate-blob absolute -bottom-40 left-1/3 h-[30rem] w-[30rem] rounded-full bg-violet-600/10 blur-3xl" />
-    </div>
+    </section>
   );
 }
 
-function Hero() {
+function CoverLink({ s, index }: { s: SocialLink; index: number }) {
   return (
-    <section className="fade-up flex flex-col items-center text-center">
-      <a
-        href={profile.credlyUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="AWS Community Builder バッジ（Credly）"
-        title="Credly でバッジを表示"
-        className="group animate-float mb-7 inline-block"
-      >
-        <Image
-          src="/cb-badge.png"
-          alt="AWS Community Builder"
-          width={96}
-          height={96}
-          priority
-          className="h-24 w-24 rounded-2xl shadow-2xl ring-1 ring-white/15 transition duration-300 group-hover:scale-105"
-        />
-      </a>
-
-      <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)] sm:text-6xl">
-        {profile.name}
-      </h1>
-      <p className="mt-2 font-mono text-sm text-zinc-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
-        {profile.nameEn}
+    <a
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block"
+    >
+      <p className="font-mono text-[1.8cqw] font-bold uppercase tracking-[0.25em] text-[#8a2f2a]">
+        {String(index).padStart(2, "0")}
       </p>
-
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-        <span className="rounded-full border border-white/15 bg-black/30 px-3 py-1 text-sm font-medium text-zinc-100 backdrop-blur-sm">
-          {profile.title}
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-400/30 bg-amber-500/20 px-3 py-1 text-sm font-medium text-amber-100 backdrop-blur-sm">
-          <CloudIcon className="h-3.5 w-3.5" />
-          {profile.badge}
-        </span>
-        <span className="rounded-full border border-white/15 bg-black/30 px-3 py-1 text-sm font-medium text-zinc-200 backdrop-blur-sm">
-          {profile.location}
-        </span>
-      </div>
-
-      <div className="mt-8 flex items-center gap-3">
-        {socials.map((s) => {
-          const Icon = socialIcons[s.icon];
-          return (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className={`group flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${s.gradient} text-white shadow-lg ring-1 ring-white/15 transition hover:-translate-y-0.5 hover:shadow-xl`}
-            >
-              <Icon className="h-5 w-5" />
-            </a>
-          );
-        })}
-      </div>
-    </section>
+      <p className="font-serif text-[4.4cqw] font-bold leading-[1.02] underline-offset-[0.4cqw] transition group-hover:text-[#8a2f2a] group-hover:underline">
+        {s.label}
+      </p>
+      <p className="font-mono text-[1.7cqw] text-[#1a1512]/55">
+        {s.handle ?? "READ MORE"}
+      </p>
+    </a>
   );
 }
 
@@ -107,20 +108,22 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="flex items-center gap-4">
       <div>
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-violet-400">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#8a2f2a]">
           {eyebrow}
         </p>
-        <h2 className="mt-1 text-2xl font-bold text-white">{title}</h2>
+        <h2 className="mt-1 font-serif text-3xl font-bold text-[#1a1512]">
+          {title}
+        </h2>
       </div>
-      <div className="h-px flex-1 bg-gradient-to-r from-white/15 to-transparent" />
+      <div className="h-px flex-1 bg-gradient-to-r from-[#1a1512]/25 to-transparent" />
     </div>
   );
 }
 
 function Links() {
   return (
-    <section className="fade-up mt-20 [animation-delay:120ms]">
-      <SectionTitle eyebrow="Connect" title="リンク" />
+    <section className="fade-up pt-16">
+      <SectionTitle eyebrow="Index" title="リンク" />
       <div className="mt-7 grid gap-4 sm:grid-cols-2">
         {socials.map((s) => {
           const Icon = socialIcons[s.icon];
@@ -130,26 +133,26 @@ function Links() {
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-white/20"
+              className="group relative overflow-hidden rounded-2xl border border-[#1a1512]/12 bg-[#fbf8f1]/70 p-5 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-[#1a1512]/25 hover:bg-[#fbf8f1]"
             >
               <div
                 className={`pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br ${s.gradient} opacity-0 transition duration-300 group-hover:opacity-10`}
               />
               <div className="flex items-center gap-4">
                 <span
-                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${s.gradient} text-white shadow-lg`}
+                  className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${s.gradient} text-white shadow-md`}
                 >
                   <Icon className="h-6 w-6" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="font-semibold text-white">{s.label}</h3>
+                  <h3 className="font-semibold text-[#1a1512]">{s.label}</h3>
                   {s.handle && (
-                    <p className="truncate font-mono text-xs text-zinc-500">
+                    <p className="truncate font-mono text-xs text-[#1a1512]/50">
                       {s.handle}
                     </p>
                   )}
                 </div>
-                <ArrowIcon className="h-5 w-5 shrink-0 text-zinc-600 transition group-hover:translate-x-0.5 group-hover:text-white" />
+                <ArrowIcon className="h-5 w-5 shrink-0 text-[#1a1512]/30 transition group-hover:translate-x-0.5 group-hover:text-[#1a1512]" />
               </div>
             </a>
           );
@@ -161,11 +164,11 @@ function Links() {
 
 function Footer() {
   return (
-    <footer className="mt-20 border-t border-white/10 pt-8 text-center">
-      <p className="text-sm text-zinc-500">
+    <footer className="mt-16 border-t border-[#1a1512]/15 pt-8 text-center">
+      <p className="text-sm text-[#1a1512]/60">
         © {new Date().getFullYear()} {profile.nameEn}
       </p>
-      <p className="mt-1 font-mono text-xs text-zinc-600">
+      <p className="mt-1 font-mono text-xs text-[#1a1512]/40">
         Built with Next.js · Deployed on Vercel
       </p>
     </footer>

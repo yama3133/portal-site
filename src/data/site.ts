@@ -74,3 +74,27 @@ export const socials: SocialLink[] = [
     gradient: "from-amber-400 to-orange-500",
   },
 ];
+
+// 雑誌表紙のコピー（現ポータルの内容から生成）
+export const cover = {
+  issue: "ISSUE 01",
+  edition: "THE BUILDER'S EDITION",
+  date: "SPRING 2026",
+  place: "TOKYO",
+  micro: ["PREMIUM EDITION", "No. 01", "FOR BUILDERS & DREAMERS"],
+  headline: {
+    kicker: "COVER STORY",
+    title: "THE AI FRONTIER",
+    sub: "生成 AI とサーバーレスで、アイデアを動かす。",
+  },
+  features: [
+    {
+      title: "AWS COMMUNITY BUILDER",
+      sub: "東京から世界へ。クラウドの最前線を走る。",
+    },
+    { title: "SERVERLESS STYLE", sub: "軽やかに、速く、美しく作る技術。" },
+    { title: "EXCLUSIVE INTERVIEW", sub: "山下祐樹のものづくり論。" },
+    { title: "PROTOTYPE TO PRODUCT", sub: "個人開発という名の冒険。" },
+    { title: "HACKATHON DIARIES", sub: "48時間の美学。" },
+  ],
+};
