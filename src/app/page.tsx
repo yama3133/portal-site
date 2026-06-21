@@ -17,7 +17,7 @@ export default function Home() {
 function Cover() {
   return (
     <section className="flex min-h-dvh w-full items-center justify-center bg-[#100d0a] p-3 sm:p-6">
-      <div className="relative aspect-[3/4] w-full max-w-[70.5vh] overflow-hidden bg-[#e9e2d3] text-[#1a1512] shadow-[0_40px_120px_rgba(0,0,0,0.6)] [container-type:size]">
+      <div className="relative aspect-[3/4] w-full max-w-[70.5vh] overflow-hidden bg-white text-[#1a1512] shadow-[0_40px_120px_rgba(0,0,0,0.6)] [container-type:size]">
         <div className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-[4cqw] pt-[3.5cqw] font-mono text-[2.1cqw] uppercase tracking-[0.18em]">
           <div className="space-y-[0.4cqw]">
             <p className="font-semibold">{cover.issue}</p>
@@ -46,11 +46,11 @@ function Cover() {
           />
         </div>
 
-        <h1 className="pointer-events-none absolute inset-x-0 top-[14.5cqw] z-20 text-center font-serif text-[27cqw] font-black leading-[0.78] tracking-[-0.02em] text-[#e9e2d3] mix-blend-difference">
+        <h1 className="pointer-events-none absolute inset-x-0 top-[14.5cqw] z-20 text-center font-serif text-[27cqw] font-black leading-[0.78] tracking-[-0.02em] text-white mix-blend-difference">
           Yuuki
         </h1>
 
-        <h1 className="pointer-events-none absolute inset-x-0 bottom-[7.5cqw] z-20 text-center font-serif text-[19.5cqw] font-black leading-[0.78] tracking-[-0.02em] text-[#e9e2d3] mix-blend-difference">
+        <h1 className="pointer-events-none absolute inset-x-0 bottom-[7.5cqw] z-20 text-center font-serif text-[19.5cqw] font-black leading-[0.78] tracking-[-0.02em] text-white mix-blend-difference">
           Yamashita
         </h1>
 
