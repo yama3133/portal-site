@@ -39,7 +39,7 @@ function Cover() {
           Yuuki<br />Yamashita
         </h1>
 
-        <div className="pointer-events-none absolute left-1/2 bottom-[8cqw] z-10 aspect-[896/1195] h-[58%] -translate-x-1/2">
+        <div className="pointer-events-none absolute left-1/2 bottom-[8cqw] z-10 aspect-[896/1195] h-[68%] -translate-x-1/2">
           <Image
             src="/portrait.png"
             alt={profile.nameEn}
