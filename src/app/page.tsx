@@ -62,18 +62,6 @@ function Cover() {
           ))}
         </div>
 
-        <div className="absolute inset-x-[4cqw] bottom-[3cqw] z-30 flex items-end justify-between font-mono text-[2cqw] uppercase tracking-[0.18em] text-[#1a1512]/70">
-          <p className="max-w-[48%] leading-relaxed">{cover.edition}</p>
-          <div className="flex h-[6cqw] items-end gap-[0.5cqw]">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <span
-                key={i}
-                className="block w-[0.4cqw] bg-[#1a1512]"
-                style={{ height: `${35 + ((i * 17) % 60)}%` }}
-              />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
