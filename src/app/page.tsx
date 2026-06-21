@@ -35,32 +35,28 @@ function Cover() {
           </p>
         </div>
 
-        <div className="pointer-events-none absolute left-1/2 top-[13%] z-10 aspect-[896/1195] h-[80%] -translate-x-1/2">
+        <h1 className="pointer-events-none absolute inset-x-[2cqw] top-[15cqw] z-20 text-center font-serif text-[15cqw] font-black leading-[0.85] tracking-[-0.02em] text-[#1a1512]">
+          Yuuki<br />Yamashita
+        </h1>
+
+        <div className="pointer-events-none absolute left-1/2 bottom-[8cqw] z-10 aspect-[896/1195] h-[58%] -translate-x-1/2">
           <Image
             src="/portrait.png"
             alt={profile.nameEn}
             fill
             priority
             sizes="640px"
-            className="object-contain object-top drop-shadow-[0_20px_50px_rgba(26,21,18,0.3)]"
+            className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(26,21,18,0.2)]"
           />
         </div>
 
-        <h1 className="pointer-events-none absolute inset-x-0 top-[14.5cqw] z-20 text-center font-serif text-[27cqw] font-black leading-[0.78] tracking-[-0.02em] text-white mix-blend-difference">
-          Yuuki
-        </h1>
-
-        <h1 className="pointer-events-none absolute inset-x-0 bottom-[7.5cqw] z-20 text-center font-serif text-[19.5cqw] font-black leading-[0.78] tracking-[-0.02em] text-white mix-blend-difference">
-          Yamashita
-        </h1>
-
-        <div className="absolute right-[4cqw] top-[29%] z-30 flex max-w-[36%] flex-col items-end gap-[4.5cqw] text-right">
+        <div className="absolute right-[4cqw] top-[42%] z-30 flex max-w-[26%] flex-col items-end gap-[3cqw] text-right">
           {socials.slice(0, 3).map((s, i) => (
             <CoverLink key={s.label} s={s} index={i + 1} />
           ))}
         </div>
 
-        <div className="absolute left-[4cqw] top-[33%] z-30 flex max-w-[36%] flex-col items-start gap-[4.5cqw]">
+        <div className="absolute left-[4cqw] top-[42%] z-30 flex max-w-[26%] flex-col items-start gap-[3cqw]">
           {socials.slice(3, 6).map((s, i) => (
             <CoverLink key={s.label} s={s} index={i + 4} />
           ))}
